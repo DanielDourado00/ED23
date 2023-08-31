@@ -55,7 +55,5 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "files.associations": {
-    "ncomplexo": "c"
-  }
+  "C_Cpp.default.compilerPath": "/usr/bin/gcc"
 }
