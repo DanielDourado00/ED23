@@ -10,14 +10,18 @@ EhReal: testa se um numero é real
 
 int main (void){
 
-    double nuc, ni;
-    printf("digite um numero:" );
-    scanf("%lf", &nuc);
-    printf("digite um numero imaginario: ");
-    scanf("%lf", &ni);
+    double nuc, ni, nuc2, ni2;
     
-    Num *p1 = inicializar(nuc, ni);
-    Num *p11 = imprime(nuc, ni);
+    printf("enter a number:" );
+    scanf("%lf", &nuc);
+    printf("enter a imaginary number: ");
+    scanf("%lf", &ni);
+    printf("enter a second number:" );
+    scanf("%lf", &nuc2);
+    printf("enter a second imaginary number: ");
+    
+    Num *p1 = inicializar(nuc, ni, nuc2, ni2);
+    Num *p11 = imprime(nuc, ni, nuc2, ni2);
     
     return 0;
 }
