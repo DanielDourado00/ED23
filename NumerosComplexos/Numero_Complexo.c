@@ -45,18 +45,18 @@ Num *Real(double numero1, double numero2)
 {
     if (cimag(numero1) == 0)
     {
-        printf("O numero %.0lf é real\n", numero1);
+        printf("\nO numero %.0lf é real\n", numero1);
     }
     else
     {
-        printf("O numero %.0lf não é real\n", numero1);
+        printf("\nO numero %.0lf não é real\n", numero1);
     }
     if (cimag(numero2) == 0)
     {
-        printf("O numero %.0lf é real\n", numero2);
+        printf("\nO numero %.0lf é real\n", numero2);
     }
     else
     {
-        printf("O numero %.0lf não é real\n", numero2);
+        printf("\nO numero %.0lf não é real\n", numero2);
     }
 }

@@ -13,7 +13,7 @@ int main (void){
     double nuc, ni, nuc2, ni2;
 
     printf("enter a number real and number complex:" );
-    scanf("%lf %lf", &nuc, &ni);
+    scanf("%lf \n %lf", &nuc, &ni);
     double complex numero1 = nuc + ni * I;
 
 
