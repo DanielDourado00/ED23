@@ -8,6 +8,14 @@ struct Numero_Complexo
     double ni2;
 };
 
+struct Numero_Complexo2{
+    double numccopy;
+    double nicopy;
+
+};
+
+
+
 Num *inicializar(double nuc, double ni, double nuc2, double ni2)
 {
     Num *n = (Num *)calloc(2, sizeof(Num));
@@ -60,3 +68,15 @@ Num *Real(double numero1, double numero2)
         printf("\nO numero %.0lf não é real\n", numero2);
     }
 }
+
+/* copiar o conteudo da struct Numero_Complexonuc e nic para a struct Numero_Complexo2 */
+
+
+/* void *copia(double nuc, double nuc2)
+{
+    Num *n = (Num *)calloc(2, sizeof(Num));
+    n->nuc = nuc;
+    n->nuc2 = nuc2;
+    n->nuc2 = n->nuc;
+    printf("o conteudo da struct1 foi copiado para a struct2");
+} */

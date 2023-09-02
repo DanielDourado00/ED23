@@ -5,11 +5,12 @@ Copia copia um numero complexo para outro
 Soma soma dois numeros complexos
 EhReal: testa se um numero é real
  */
-
+/* gcc -o lc main.c Numero_Complexo.c -lm */
 #include "Numero_Complexo.h"
 
 int main (void){
 
+    char op;
     double nuc, ni, nuc2, ni2;
 
     printf("enter a number real and number complex:" );
@@ -20,13 +21,19 @@ int main (void){
     printf("enter a number real and number complex:" );
     scanf("%lf %lf", &nuc2, &ni2);
     double complex numero2 = nuc2 + ni2 * I;
+   
+
+   /* print n esta carregando para ler */
     
     Num *p1 = inicializar(nuc, ni, nuc2, ni2);  
     Num *p11 = imprime(nuc, ni, nuc2, ni2);
     Num *ps = soma(nuc, ni, nuc2, ni2);
     Num *r = Real(numero1, numero2);
+    Num *cp = copia(numero1, numero2);
+
 
     
+
     return 0;
 }
 
