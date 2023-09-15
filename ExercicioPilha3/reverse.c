@@ -4,7 +4,7 @@ palavras. */
 
 
 #include "libs.h"
-#include "inverte.h"
+#include "stack.h"
 
 int main(){
 

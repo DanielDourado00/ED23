@@ -1,5 +1,5 @@
-#ifndef INVERTE_H
-#define INVERTE_H
+#ifndef STACK_H
+#define STACK_H
 
 #include "libs.h"
 
