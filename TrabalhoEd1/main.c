@@ -41,6 +41,7 @@ int main(int argc, char *argv[])
     printf("\nO nome do arquivo eh: %s\n", filename);
 
     ReadMaze(filename);
+ 
 
     return 0;
 }
