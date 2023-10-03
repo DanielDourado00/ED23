@@ -30,3 +30,10 @@ coordenadas desempilhar(node **topo){
     return coord;                                    // retorna coordenadas do no desempilhado
 }
 
+int empity(node *topo){
+    if(topo == NULL){
+        return 1;
+    }
+    return 0;
+}
+

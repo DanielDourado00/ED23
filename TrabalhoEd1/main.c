@@ -34,16 +34,13 @@ indo e voltando (pode ser com um ponto, ou qualquer outro caractere que quiser).
 
 int main(int argc, char *argv[])
 {
-    /* lendo labirinto.txt */
-    FILE *arq;
-    arq = fopen("labirinto.txt", "r");
-    if(arq == NULL){
-        printf("Erro ao abrir arquivo\n");
-        exit(1);
-    }
 
+    printf("\nInforme o nome do arquivo que esta o labirinto\n");
+    char filename[100];
+    scanf("%s", filename);
+    printf("\nO nome do arquivo eh: %s\n", filename);
 
+    ReadMaze(filename);
 
-    
     return 0;
 }

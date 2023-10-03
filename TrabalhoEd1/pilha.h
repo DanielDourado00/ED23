@@ -26,5 +26,7 @@ node *criarnode(coordenadas coord);
 void empilhar(node **topo, coordenadas coord);
 /* funcao para desempilhar as coordenadas */
 coordenadas desempilhar(node **topo);
+/* verificar pilha vazia */
+int empity(node *topo);
 
 #endif
