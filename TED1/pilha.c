@@ -44,3 +44,11 @@ void peek(Stack *stack, int *x, int *y){
         *y = stack->top->y;
     }
 }
+
+void imprimestack(Stack *stack){
+    Node *aux = stack->top;
+    while(aux != NULL){
+        printf("x: %d, y: %d\n", aux->x, aux->y);
+        aux = aux->next;
+    }
+}

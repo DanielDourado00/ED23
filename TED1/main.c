@@ -47,6 +47,8 @@ int main(int argc, char *argv[])
     /* ler arquivo e passar para funcao */
 
     ReadMaze(filename);
+
+    
     
 
     return 0;

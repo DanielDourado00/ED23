@@ -26,9 +26,9 @@ void ReadMaze(const char *filename)
 
     fscanf(file, "%d", &n); // le o primeiro elemento do txt e guarda na variavel n
 
-    int maze[n][n];         // cria a matriz com o tamanho n
+    int maze[n][n]; // cria a matriz com o tamanho n
 
-    int i, j;               // variaveis para percorrer a matriz
+    int i, j; // variaveis para percorrer a matriz
 
     for (i = 0; i < n; i++)
     { // percorre as linhas
@@ -39,8 +39,8 @@ void ReadMaze(const char *filename)
             if (maze[i][j] == 2)
             {
                 /* maze[i][j] = 'X'; // Posição do personagem */
-                startY = i; // representa a coluna
-                startX = j; // representa a linha
+                startY = j; // representa a coluna
+                startX = i; // representa a linha
 
                 /* empilhar as coordendas iniciais */
                 // empilhar(startX, startY);
@@ -48,8 +48,8 @@ void ReadMaze(const char *filename)
             else if (maze[i][j] == 3)
             {
                 /* maze[i][j] = 'X'; // Posição do personagem */
-                endY = i; // representa a coluna
-                endX = j; // representa a linha
+                endY = j; // representa a coluna
+                endX = i; // representa a linha
 
                 /* empilhar as coordendas iniciais */
                 // empilhar(startX, startY);
@@ -57,66 +57,82 @@ void ReadMaze(const char *filename)
         }
     }
     printf("\n");
-    imprimirLabirinto(maze);            // funcao para imprimir o labirinto
+    imprimirLabirinto(maze); // funcao para imprimir o labirinto
 
-    printf("valores de startX %d, startY %d, endX %d, endY %d, n %d em lab.c:\n", startX, startY, endX, endY, n);   
+    printf("valores de startX %d, startY %d, endX %d, endY %d, n %d em lab.c:\n", startX, startY, endX, endY, n);
     solveMaze(startX, startY, endX, endY, n, maze); // funcao para resolver o labirinto
 }
 
 /* implementando backtracking para resolver o labirinto */
 
-int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n]) {
+int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
+{
     // Criar uma pilha para armazenar as coordenadas
-
+    int x = startX, y = startY;
     printf("entrou em solveMaze\n");
 
     Stack *stack = createStack();
 
     // Marcar a posição inicial como visitada
-    maze[startX][startY] = 1;
+    maze[startX][startY] = 5;
 
     // Empilhar a posição inicial
     push(stack, startX, startY);
 
-    while (!isEmpty(stack)) {
+    while (!isEmpty(stack))
+    {
         int x, y;
+        printf("entrou no while de solveMaze\n");
+        printf("valor de x e y %d %d\n", x, y);
+
         // Obter as coordenadas do topo da pilha
         peek(stack, &x, &y);
 
         // Verificar se chegamos à posição de chegada
-        if (x == endX && y == endY) {
-            imprimirLabirinto(maze);
+        if (x == endX && y == endY)
+        {
+            printf("CAMINHO ENCONTRADO\n");
             return 1; // Labirinto resolvido
-        }else{
-            printf("nao chegou na posicao final\n");
         }
 
         // Tentar mover para a direita
-        if (y + 1 < n && maze[x][y + 1] == 0) {
-            y++;
-            printf("chegou aqui na parte de movimentacao\n");
+        if (y + 1 < n && (maze[x][y + 1] == 0 || maze[x][y + 1] == 3))
+        {
             imprimirLabirinto(maze);
+            y++;
+            printf("valor de y %d\n", y);
+            printf("valor de x %d\n", x);
+            printf("chegou aqui na parte de movimentacao\n");
         }
         // Tentar mover para baixo
-        else if (x + 1 < n && maze[x + 1][y] == 0) {
+        else if (x + 1 < n && (maze[x + 1][y] == 0 || maze[x][y + 1] == 3))
+        {
+            printf("valor de x: %d\n", x);
+            printf("valor de y: %d\n", y);
             x++;
             imprimirLabirinto(maze);
         }
         // Tentar mover para a esquerda
-        else if (y - 1 >= 0 && maze[x][y - 1] == 0) {
+        else if (y - 1 >= 0 && (maze[x][y - 1] == 0 || maze[x][y + 1] == 3))
+        {
             y--;
             imprimirLabirinto(maze);
         }
         // Tentar mover para cima
-        else if (x - 1 >= 0 && maze[x - 1][y] == 0) {
+        else if (x - 1 >= 0 && (maze[x - 1][y] == 0 || maze[x][y + 1] == 3))
+        {
             x--;
             imprimirLabirinto(maze);
-        } else {
+        }
+        else
+        {
             // Se não for possível mover em nenhuma direção, desempilhe a posição atual
             pop(stack);
+            imprimirLabirinto(maze);
+            maze[x][y] = 9;
             continue;
         }
-            
+
         // Marcar a nova posição como visitada e empilhar
         maze[x][y] = 5;
         push(stack, x, y);
@@ -139,18 +155,43 @@ bool PosicValida(int x, int y, int n, int maze[n][n])
 
 void imprimirLabirinto(int maze[n][n])
 {
-    /* system("clear"); // Limpa a tela */
-
+    printf("maze[1][1] %d\n", maze[1][1]);
+    
+    /*  getchar(); */
     for (int i = 0; i < n; i++)
     {
+        
         for (int j = 0; j < n; j++)
         {
-            printf("%d ", maze[i][j]);
+            if (maze[i][j] == 1)
+            {
+                printf("+  ");
+            }
+            else if (maze[i][j] == 2)
+            {
+                printf("M  ");
+            }
+            else if (maze[i][j] == 3)
+            {
+                printf("O  ");
+            }
+            else if (maze[i][j] == 5)
+            {
+                printf(".  ");
+            }
+/*             else if (maze[i][i] == 9)
+            {
+                printf("X  ");
+            } */
+            else
+            {
+                printf("   ");
+            }
         }
         printf("\n");
     }
 
     // Aguarda um pequeno intervalo de tempo (opcional, para animação)
     // Você pode ajustar o tempo de pausa de acordo com suas preferências
-    usleep(50000); // Pausa por 50 milissegundos (50,000 microssegundos)
+    usleep(1000000); // Pausa por 50 milissegundos (50,000 microssegundos)
 }

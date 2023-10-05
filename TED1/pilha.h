@@ -42,3 +42,42 @@ void peek(Stack *stack, int *x, int *y);
 
 
 #endif // PILHA_H
+
+
+
+/* void imprimirLabirinto(int maze[n][n])
+{
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (maze[i][j] == 1)
+            {
+                printf("+  ");
+            }
+            else if (maze[i][j] == 2)
+            {
+                printf("1  ");
+            }
+            else if (maze[i][j] == 3)
+            {
+                printf("O  ");
+            }
+            else if (maze[i][j] == 5)
+            {
+                printf("X  ");
+            }
+            else
+            {
+                printf("   ");
+            }
+           
+        }
+        printf("\n");
+    }
+
+    // Aguarda um pequeno intervalo de tempo (opcional, para animação)
+    // Você pode ajustar o tempo de pausa de acordo com suas preferências
+    usleep(100000); // Pausa por 50 milissegundos (50,000 microssegundos)
+} */
