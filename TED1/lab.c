@@ -114,9 +114,9 @@ int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
         {
             imprimirLabirinto(maze);
             y++;
-/*          printf("valor de y %d\n", y);
-            printf("valor de x %d\n", x);
-            printf("chegou aqui na parte de movimentacao\n"); */
+            /*          printf("valor de y %d\n", y);
+                        printf("valor de x %d\n", x);
+                        printf("chegou aqui na parte de movimentacao\n"); */
         }
         // Tentar mover para baixo
         else if (x + 1 < n && (maze[x + 1][y] == 0 || maze[x + 1][y] == 3))
@@ -139,9 +139,8 @@ int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
         else
         {
             // Se não for possível mover em nenhuma direção, desempilhe a posição atual
-            pop(stack);
-            imprimirLabirinto(maze);
-            maze[x][y] = 9;
+            pop(stack);     // desempilhar
+            maze[x][y] = 9; // marcar como visitado
             continue;
         }
 
@@ -151,6 +150,22 @@ int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
     }
 
     // Se a pilha estiver vazia e não encontrarmos uma solução
+
+    // se nao foi possivel sair log isEmpty vai ser true entao vai imprimir a mensagem
+    if (isEmpty(stack))
+    {
+        system("clear");
+
+        printf("\n\n");
+        printf("\t\t\t\t\t\t\t      L       OOO       SSS     EEEE      RRRR\n");
+        printf("\t\t\t\t\t\t\t      L      O   O     S        E         R   R\n");
+        printf("\t\t\t\t\t\t\t      L      O   O       SS     EEE       RRRR\n");
+        printf("\t\t\t\t\t\t\t      L      O   O         S    E         R  R\n");
+        printf("\t\t\t\t\t\t\t      L L L   OOO       SSS     EEEE      R   R\n");
+        printf("\n\n");
+
+    }
+
     return 0;
 }
 
