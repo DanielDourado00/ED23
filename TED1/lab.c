@@ -68,11 +68,11 @@ void ReadMaze(const char *filename)
 int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
 {
 
-    //conteudo do endX e endY
-/*     printf("\t\t\tconteudo de endx: %d e endY: %d em SOLVEMAZE\n\n:", endX, endY); */
+    // conteudo do endX e endY
+    /*     printf("\t\t\tconteudo de endx: %d e endY: %d em SOLVEMAZE\n\n:", endX, endY); */
     // Criar uma pilha para armazenar as coordenadas
     int x = startX, y = startY;
-    printf("entrou em solveMaze\n");
+    /* printf("entrou em solveMaze\n"); */
 
     Stack *stack = createStack();
 
@@ -85,17 +85,27 @@ int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
     while (!isEmpty(stack))
     {
         int x, y;
-/*         printf("entrou no while de solveMaze\n");
-        printf("valor de x e y %d %d\n", x, y); */
+        /*         printf("entrou no while de solveMaze\n");
+                printf("valor de x e y %d %d\n", x, y); */
 
         // Obter as coordenadas do topo da pilha
         peek(stack, &x, &y);
 
         // Verificar se chegamos à posição de chegada
-        printf("conteudo de x(linha)[cresce para baixo]: %d\n conteudo de y(coluna)[cresce para direita]: %d\n conteudo de endX: %d\n conteudo de endY: %d\n", x, y, endX, endY);
+        /*         printf("conteudo de x(linha)[cresce para baixo]: %d\n conteudo de y(coluna)[cresce para direita]: %d\n conteudo de endX: %d\n conteudo de endY: %d\n", x, y, endX, endY);
+         */
         if (x == endX && y == endY)
         {
-            printf("\n\n\t\t\tparabens vc conseguiu\n");
+            printf("PARABÉNS VOCE CONSEGUEU SAIR DO LABIRINTO\n");
+            printf("              .-=========-.\n");
+            printf("              \\'-=======-'/\n");
+            printf("              _|   .=.   |_\n");
+            printf("             ((|  {{1}}  |))\n");
+            printf("              \\|   /|\\   |/\n");
+            printf("               \\__ '`' __/\n");
+            printf("                 _`) (`_\n");
+            printf("               _/_______\\_\n");
+            printf("              /___________\\\n");
             return 1; // Labirinto resolvido
         }
 
@@ -104,9 +114,9 @@ int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
         {
             imprimirLabirinto(maze);
             y++;
-            printf("valor de y %d\n", y);
+/*          printf("valor de y %d\n", y);
             printf("valor de x %d\n", x);
-            printf("chegou aqui na parte de movimentacao\n");
+            printf("chegou aqui na parte de movimentacao\n"); */
         }
         // Tentar mover para baixo
         else if (x + 1 < n && (maze[x + 1][y] == 0 || maze[x + 1][y] == 3))
@@ -158,7 +168,7 @@ bool PosicValida(int x, int y, int n, int maze[n][n])
 void imprimirLabirinto(int maze[n][n])
 {
 
-    /* system("clear"); */
+    system("clear");
     // printf("maze[1][1] %d\n", maze[1][1]);
 
     /*  getchar(); */
@@ -197,5 +207,5 @@ void imprimirLabirinto(int maze[n][n])
 
     // Aguarda um pequeno intervalo de tempo (opcional, para animação)
     // Você pode ajustar o tempo de pausa de acordo com suas preferências
-    usleep(1000000); // Pausa por 50 milissegundos (50,000 microssegundos)
+    usleep(1200000); // Pausa por 50 milissegundos (50,000 microssegundos)
 }
