@@ -59,7 +59,7 @@ void ReadMaze(const char *filename)
     printf("\n");
     imprimirLabirinto(maze); // funcao para imprimir o labirinto
 
-    printf("valores de startX %d, startY %d, endX %d, endY %d, n %d em lab.c:\n", startX, startY, endX, endY, n);
+    printf("valores de startX %d, startY %d, endX %d, endY %d, n %d em lab.c:\n", startX, startY, endX, endY, endY);
     solveMaze(startX, startY, endX, endY, n, maze); // funcao para resolver o labirinto
 }
 
@@ -67,6 +67,9 @@ void ReadMaze(const char *filename)
 
 int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
 {
+
+    //conteudo do endX e endY
+/*     printf("\t\t\tconteudo de endx: %d e endY: %d em SOLVEMAZE\n\n:", endX, endY); */
     // Criar uma pilha para armazenar as coordenadas
     int x = startX, y = startY;
     printf("entrou em solveMaze\n");
@@ -82,16 +85,17 @@ int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
     while (!isEmpty(stack))
     {
         int x, y;
-        printf("entrou no while de solveMaze\n");
-        printf("valor de x e y %d %d\n", x, y);
+/*         printf("entrou no while de solveMaze\n");
+        printf("valor de x e y %d %d\n", x, y); */
 
         // Obter as coordenadas do topo da pilha
         peek(stack, &x, &y);
 
         // Verificar se chegamos à posição de chegada
+        printf("conteudo de x(linha)[cresce para baixo]: %d\n conteudo de y(coluna)[cresce para direita]: %d\n conteudo de endX: %d\n conteudo de endY: %d\n", x, y, endX, endY);
         if (x == endX && y == endY)
         {
-            printf("CAMINHO ENCONTRADO\n");
+            printf("\n\n\t\t\tparabens vc conseguiu\n");
             return 1; // Labirinto resolvido
         }
 
@@ -105,21 +109,19 @@ int solveMaze(int startX, int startY, int endX, int endY, int n, int maze[n][n])
             printf("chegou aqui na parte de movimentacao\n");
         }
         // Tentar mover para baixo
-        else if (x + 1 < n && (maze[x + 1][y] == 0 || maze[x][y + 1] == 3))
+        else if (x + 1 < n && (maze[x + 1][y] == 0 || maze[x + 1][y] == 3))
         {
-            printf("valor de x: %d\n", x);
-            printf("valor de y: %d\n", y);
             x++;
             imprimirLabirinto(maze);
         }
         // Tentar mover para a esquerda
-        else if (y - 1 >= 0 && (maze[x][y - 1] == 0 || maze[x][y + 1] == 3))
+        else if (y - 1 >= 0 && (maze[x][y - 1] == 0 || maze[x][y - 1] == 3))
         {
             y--;
             imprimirLabirinto(maze);
         }
         // Tentar mover para cima
-        else if (x - 1 >= 0 && (maze[x - 1][y] == 0 || maze[x][y + 1] == 3))
+        else if (x - 1 >= 0 && (maze[x - 1][y] == 0 || maze[x - 1][y] == 3))
         {
             x--;
             imprimirLabirinto(maze);
@@ -155,12 +157,14 @@ bool PosicValida(int x, int y, int n, int maze[n][n])
 
 void imprimirLabirinto(int maze[n][n])
 {
-    printf("maze[1][1] %d\n", maze[1][1]);
-    
+
+    /* system("clear"); */
+    // printf("maze[1][1] %d\n", maze[1][1]);
+
     /*  getchar(); */
     for (int i = 0; i < n; i++)
     {
-        
+
         for (int j = 0; j < n; j++)
         {
             if (maze[i][j] == 1)
@@ -179,10 +183,10 @@ void imprimirLabirinto(int maze[n][n])
             {
                 printf(".  ");
             }
-/*             else if (maze[i][i] == 9)
-            {
-                printf("X  ");
-            } */
+            /*             else if (maze[i][i] == 9)
+                        {
+                            printf("X  ");
+                        } */
             else
             {
                 printf("   ");
